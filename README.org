@@ -3,3 +3,21 @@
 
 * About
 JASA - Just Another Slack API
+
+* Installation
+=git clone https://github.com/dptd/jasa=
+=(ql:quickload :jasa)=
+
+* Usage
+First of all you need to set your Slack API token.
+=(jasa:set-token "")=
+
+If you do not remember if you have set it already you can check it.
+=(jasa:get-token)=
+
+* API
+** api
+=(jasa.api:test :error "" :foo "")=
+** auth
+=(jasa.auth:test)=
+=(jasa.auth:revoke=

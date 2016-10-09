@@ -1,5 +1,16 @@
-;;;; package.lisp
-
 (defpackage #:jasa
-  (:use #:cl))
+  (:use #:cl)
+  (:export set-token get-token))
+
+(defpackage #:jasa.core
+  (:use :cl)
+  (:export send send-and-get-answer))
+
+(defpackage #:jasa.api
+  (:use :cl)
+  (:export test))
+
+(defpackage #:jasa.auth
+  (:use :cl)
+  (:export revoke test))
 

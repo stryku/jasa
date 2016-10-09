@@ -1,6 +1,11 @@
-;;;; jasa.lisp
-
 (in-package #:jasa)
 
-;;; "jasa" goes here. Hacks and glory await!
+(defvar *token* nil)
 
+(defun set-token (token)
+  "Sets Slack API token."
+  (setf *token* token))
+
+(defun get-token ()
+  "Returns Slack API token."
+  *token*)
