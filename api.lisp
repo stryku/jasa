@@ -1,7 +1,7 @@
 (in-package #:jasa.api)
 
 (defun test (&key ((:error err)) ((:foo foo)))
-  (jasa.core:send-and-get-answer (prepare-method err foo)))
+  (jasa.core:send (prepare-method err foo)))
 
 (defun prepare-method (err foo)
   (cond ((and err foo) (format nil "api.test?error=~A&foo=~A" err foo))

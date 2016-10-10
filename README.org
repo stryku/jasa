@@ -9,16 +9,30 @@
 * Usage
 First of all you need to set your Slack API token.
 
-=(jasa:set-token "")=
+=(setf jasa:*token* "")=
 
-If you do not remember if you have set it already you can check it.
-
-=(jasa:get-token)=
+This token will be automatically used in all methods which requires authentication.
 
 * API
-** api
-=(jasa.api:test :error "" :foo "")=
-** auth
+JASA follows official [[https://api.slack.com/methods/][Slack Web API]] methods convention. You should be able to specify all the arguments described in the Slack API for method which is implemented. For example for [[https://api.slack.com/methods/chat.postMessage][chat.postMessage]] there are plenty of different methods available. You can set them using Common Lisp keywords. See few examples below:
+#+BEGIN_SRC lisp
+
+(jasa.chat:post-message :channel "C01234567" :text "test message")
+(jasa.chat:post-message :channel "C01234567" :text "test message" :icon_emoji ":robot_face:")
+
+#+END_SRC
+
+** jasa
+=(jasa:*token*)=
+** jasa.core
+=(jasa:send)=
+
+=(jasa:send-and-get-answer)=
+** jasa.api
+=(jasa.api:test)=
+** jasa.auth
 =(jasa.auth:test)=
 
 =(jasa.auth:revoke=
+** jasa.chat
+=(jasa.chat:post-message)=

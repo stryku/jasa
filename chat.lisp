@@ -19,7 +19,7 @@
                                        ((:icon_url icon-url))
                                        ((:icon_emoji icon-emoji)))
   "Post message to a channel based on the given parameters."
-  (jasa.core:send-and-get-answer
+  (jasa.core:send
    (concatenate 'string
                 "chat.postMessage?token="
                 jasa:*token*
