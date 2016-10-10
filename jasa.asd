@@ -8,5 +8,6 @@
                (:file "jasa")
                (:file "core")
                (:file "api")
-               (:file "auth")))
+               (:file "auth")
+               (:file "chat")))
 

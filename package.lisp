@@ -1,6 +1,6 @@
 (defpackage #:jasa
   (:use #:cl)
-  (:export set-token get-token))
+  (:export *token*))
 
 (defpackage #:jasa.core
   (:use :cl)
@@ -14,3 +14,6 @@
   (:use :cl)
   (:export revoke test))
 
+(defpackage #:jasa.chat
+  (:use :cl)
+  (:export delete-message me-message post-message update))
