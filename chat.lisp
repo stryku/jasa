@@ -6,6 +6,9 @@
 (defun me-message ()
   ())
 
+(defun update ()
+  ())
+
 (defun post-message (&rest parameters &key
                                        ((:channel channel))
                                        ((:text text))
@@ -20,22 +23,40 @@
                                        ((:icon_emoji icon-emoji)))
   "Post message to a channel based on the given parameters."
   (jasa.core:send
-   (concatenate 'string
-                "chat.postMessage?token="
-                jasa:*token*
-                (prepare-method parameters))))
+   (format nil "chat.postMessage?token=~A" jasa:*token*)
+   (prepare-method parameters)))
 
 (defun prepare-method (list)
-  (concatenate-pairs (prepare-pairs list)))
-
-(defun concatenate-pairs (list)
-  (if list
-      (concatenate 'string (car list) (concatenate-pairs (cdr list)))))
+  (prepare-pairs list))
 
 (defun prepare-pairs (list)
   (let ((parameters (remove-if-not #'symbolp list))
         (values (remove-if #'symbolp list)))
-    (mapcar #'(lambda (parameter value) (format nil "&~A=~A" (string-downcase parameter) value)) parameters values)))
+    (mapcar #'(lambda (parameter value) (cons (string-downcase parameter) (string value))) parameters values)))
 
-(defun update ()
-  ())
+(defun prepare-attachments (&rest attachments &key
+                                                ((:fallback fallback))
+                                                ((:fallback_id fallback-id))
+                                                ((:attachment_type attachment-type))
+                                                ((:actions actions)) ;; todo, json
+                                                ((:color color))
+                                                ((:pretext pretext))
+                                                ((:author_name author-name))
+                                                ((:author_link author-link))
+                                                ((:author_icon author-icon))
+                                                ((:title title))
+                                                ((:title_link title-link))
+                                                ((:text text))
+                                                ((:fields fields)) ;; todo, json
+                                                ((:image_url image-url))
+                                                ((:thumb_url thumb-url))
+                                                ((:footer footer))
+                                                ((:footer_icon footer_icon))
+                                                ((:ts ts)))
+  "Returns attachments which can be used in  post-message function."
+  (format nil "[~A]" (cl-json:encode-json-alist-to-string (prepare-pairs-structured-msg attachments))))
+
+(defun prepare-pairs-structured-msg  (list)
+    (let ((parameters (remove-if-not #'symbolp list))
+          (values (remove-if #'symbolp list)))
+      (mapcar #'(lambda (parameter value) (cons (string-downcase parameter) value)) parameters values)))
