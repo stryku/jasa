@@ -32,7 +32,7 @@ You can also use [[https://api.slack.com/docs/message-attachments][message attac
                                                                     :color "#36a64f"))
 #+END_SRC
 
-You can also provide json yourself.
+You can also provide raw json yourself.
 
 #+BEGIN_SRC lisp
 (jasa.chat:post-message :channel "C01234567"
@@ -51,7 +51,9 @@ You can also provide json yourself.
 ** jasa.auth
 =(jasa.auth:test)=
 
-=(jasa.auth:revoke=
+=(jasa.auth:revoke)=
+** jasa.bots
+=(jasa.bots:info)=
 ** jasa.chat
 =(jasa.chat:post-message)=
 

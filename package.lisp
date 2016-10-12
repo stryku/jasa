@@ -17,3 +17,7 @@
 (defpackage #:jasa.chat
   (:use :cl)
   (:export delete-message me-message post-message update prepare-attachments))
+
+(defpackage #:jasa.bots
+  (:use :cl)
+  (:export info))

@@ -9,5 +9,6 @@
                (:file "core")
                (:file "api")
                (:file "auth")
-               (:file "chat")))
+               (:file "chat")
+               (:file "bots")))
 
