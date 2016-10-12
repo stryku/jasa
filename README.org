@@ -13,7 +13,9 @@ First of all you need to set your Slack API token.
 
 This token will be automatically used in all methods which requires authentication.
 
-JASA follows official [[https://api.slack.com/methods/][Slack Web API]] methods convention. You should be able to specify all the arguments described in the Slack API for method which is implemented. For example for [[https://api.slack.com/methods/chat.postMessage][chat.postMessage]] there are plenty of different methods available. You can set them using Common Lisp keywords. See few examples below:
+JASA follows official [[https://api.slack.com/methods/][Slack Web API]] methods convention. You should be able to specify all the arguments described in the Slack API for method which is implemented. For example for [[https://api.slack.com/methods/chat.postMessage][chat.postMessage]] there are plenty of different methods available. Most of the time you can set them using Common Lisp keywords.
+
+*** How to post messages to specific channel.
 #+BEGIN_SRC lisp
 (jasa.chat:post-message :channel "C01234567"
                         :text "test message")
@@ -32,11 +34,23 @@ You can also use [[https://api.slack.com/docs/message-attachments][message attac
                                                                     :color "#36a64f"))
 #+END_SRC
 
-You can also provide raw json yourself.
+If you want you can also provide raw json yourself.
 
 #+BEGIN_SRC lisp
 (jasa.chat:post-message :channel "C01234567"
                         :attachments "[{\"pretext\":\"Structured Message\",\"text\":\"Hello there!\",\"color\":\"#36a64f\"}]")
+#+END_SRC
+
+*** How to get information about direct messages.
+#+BEGIN_SRC lisp
+(jasa.im:list-im)
+#+END_SRC
+
+*** How to get messages from specific direct messages channel.
+#+BEGIN_SRC lisp
+(jasa.im:history :channel "D01234567" :count "2")
+
+(jasa.im:history :channel "D01234567" :latest "UnixTimeStamp")
 #+END_SRC
 
 * API
@@ -58,3 +72,13 @@ You can also provide raw json yourself.
 =(jasa.chat:post-message)=
 
 =(jasa.chat:prepare-attachments)=
+** jasa.im
+=(jasa.im:close-im)=
+
+=(jasa.im:history)=
+
+=(jasa.im:list-im)=
+
+=(jasa.im:mark)=
+
+=(jasa.im:open-im)=
