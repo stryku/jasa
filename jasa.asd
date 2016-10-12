@@ -10,5 +10,6 @@
                (:file "api")
                (:file "auth")
                (:file "chat")
-               (:file "bots")))
+               (:file "bots")
+               (:file "im")))
 

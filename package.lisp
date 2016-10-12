@@ -4,7 +4,7 @@
 
 (defpackage #:jasa.core
   (:use :cl)
-  (:export send send-and-get-answer))
+  (:export send send-and-get-answer prepare-arguments))
 
 (defpackage #:jasa.api
   (:use :cl)
@@ -21,3 +21,7 @@
 (defpackage #:jasa.bots
   (:use :cl)
   (:export info))
+
+(defpackage #:jasa.im
+  (:use :cl)
+  (:export close-im history list-im mark open-im))

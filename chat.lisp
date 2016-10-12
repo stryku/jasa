@@ -15,16 +15,11 @@
   "Post message to a channel based on the given parameters."
   (jasa.core:send
    (format nil "chat.postMessage?token=~A" jasa:*token*)
-   :json (prepare-arguments parameters
+   :json (jasa.core:prepare-arguments parameters
                             #'(lambda (parameter value)
                                 (cons
                                  (string-downcase parameter)
                                  (string value))))))
-
-(defun prepare-arguments (list fn)
-  (let ((parameters (remove-if-not #'symbolp list))
-        (values (remove-if #'symbolp list)))
-    (mapcar fn parameters values)))
 
 (defun prepare-attachments (&rest attachments &key
                                                 ((:fallback fallback))
@@ -47,7 +42,7 @@
                                                 ((:ts ts)))
   "Returns attachments which can be used in  post-message function."
   (format nil "[~A]" (cl-json:encode-json-alist-to-string
-                      (prepare-arguments attachments
+                      (jasa.core:prepare-arguments attachments
                                          #'(lambda (parameter value)
                                              (cons
                                               (string-downcase parameter)
