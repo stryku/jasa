@@ -1,14 +1,5 @@
 (in-package #:jasa.chat)
 
-(defun delete-message ()
-  ())
-
-(defun me-message ()
-  ())
-
-(defun update ()
-  ())
-
 (defun post-message (&rest parameters &key
                                        ((:channel channel))
                                        ((:text text))
@@ -24,15 +15,16 @@
   "Post message to a channel based on the given parameters."
   (jasa.core:send
    (format nil "chat.postMessage?token=~A" jasa:*token*)
-   (prepare-method parameters)))
+   :json (prepare-arguments parameters
+                            #'(lambda (parameter value)
+                                (cons
+                                 (string-downcase parameter)
+                                 (string value))))))
 
-(defun prepare-method (list)
-  (prepare-pairs list))
-
-(defun prepare-pairs (list)
+(defun prepare-arguments (list fn)
   (let ((parameters (remove-if-not #'symbolp list))
         (values (remove-if #'symbolp list)))
-    (mapcar #'(lambda (parameter value) (cons (string-downcase parameter) (string value))) parameters values)))
+    (mapcar fn parameters values)))
 
 (defun prepare-attachments (&rest attachments &key
                                                 ((:fallback fallback))
@@ -54,9 +46,18 @@
                                                 ((:footer_icon footer_icon))
                                                 ((:ts ts)))
   "Returns attachments which can be used in  post-message function."
-  (format nil "[~A]" (cl-json:encode-json-alist-to-string (prepare-pairs-structured-msg attachments))))
+  (format nil "[~A]" (cl-json:encode-json-alist-to-string
+                      (prepare-arguments attachments
+                                         #'(lambda (parameter value)
+                                             (cons
+                                              (string-downcase parameter)
+                                              value))))))
 
-(defun prepare-pairs-structured-msg  (list)
-    (let ((parameters (remove-if-not #'symbolp list))
-          (values (remove-if #'symbolp list)))
-      (mapcar #'(lambda (parameter value) (cons (string-downcase parameter) value)) parameters values)))
+(defun delete-message ()
+  ())
+
+(defun me-message ()
+  ())
+
+(defun update ()
+  ())

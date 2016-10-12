@@ -13,25 +13,33 @@ First of all you need to set your Slack API token.
 
 This token will be automatically used in all methods which requires authentication.
 
-* API
 JASA follows official [[https://api.slack.com/methods/][Slack Web API]] methods convention. You should be able to specify all the arguments described in the Slack API for method which is implemented. For example for [[https://api.slack.com/methods/chat.postMessage][chat.postMessage]] there are plenty of different methods available. You can set them using Common Lisp keywords. See few examples below:
 #+BEGIN_SRC lisp
-(jasa.chat:post-message :channel "C01234567" :text "test message")
-(jasa.chat:post-message :channel "C01234567" :text "test message" :icon_emoji ":robot_face:")
+(jasa.chat:post-message :channel "C01234567"
+                        :text "test message")
+
+(jasa.chat:post-message :channel "C01234567"
+                        :text "test message"
+                        :icon_emoji ":robot_face:")
 #+END_SRC
 
 You can also use [[https://api.slack.com/docs/message-attachments][message attachments]] by calling =(prepare-attachments)= function.
 
 #+BEGIN_SRC lisp
-(jasa.chat:post-message :channel "C01234567" :attachments (prepare-attachments :pretext "Structured Message" :text "Hello there!" :color "#36a64f"))
+(jasa.chat:post-message :channel "C01234567"
+                        :attachments (jasa.chat:prepare-attachments :pretext "Structured Message"
+                                                                    :text "Hello there!"
+                                                                    :color "#36a64f"))
 #+END_SRC
 
-You can also write specific json yourself.
+You can also provide json yourself.
 
 #+BEGIN_SRC lisp
-(jasa.chat:post-message :channel "C01234567" :attachments "[{\"pretext\":\"Structured Message\",\"text\":\"Hello there!\",\"color\":\"#36a64f\"}]")
+(jasa.chat:post-message :channel "C01234567"
+                        :attachments "[{\"pretext\":\"Structured Message\",\"text\":\"Hello there!\",\"color\":\"#36a64f\"}]")
 #+END_SRC
 
+* API
 ** jasa
 =(jasa:*token*)=
 ** jasa.core

@@ -1,6 +1,9 @@
 (in-package #:jasa.api)
 
-(defun test (&key ((:error err)) ((:foo foo)))
+(defun test (&key
+               ((:error err))
+               ((:foo foo)))
+  "Tests Slack API."
   (jasa.core:send (prepare-method err foo)))
 
 (defun prepare-method (err foo)
