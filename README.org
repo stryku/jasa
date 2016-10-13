@@ -82,3 +82,5 @@ If you want you can also provide raw json yourself.
 =(jasa.im:mark)=
 
 =(jasa.im:open-im)=
+** jasa.emoji
+=(jasa.emoji:list-emoji)=

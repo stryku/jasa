@@ -11,5 +11,5 @@
                (:file "auth")
                (:file "chat")
                (:file "bots")
-               (:file "im")))
-
+               (:file "im")
+               (:file "emoji")))

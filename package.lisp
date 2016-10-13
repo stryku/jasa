@@ -25,3 +25,7 @@
 (defpackage #:jasa.im
   (:use :cl)
   (:export close-im history list-im mark open-im))
+
+(defpackage #:jasa.emoji
+  (:use :cl)
+  (:export list-emoji))
