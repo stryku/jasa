@@ -1,25 +1,26 @@
 (in-package #:jasa.chat)
 
 (defun post-message (&rest parameters &key
-                                       ((:channel channel))
-                                       ((:text text))
-                                       ((:parse parse))
-                                       ((:link_names link-names))
-                                       ((:attachments attachments))
-                                       ((:unfurl_links unfurl-links))
-                                       ((:unfurl_media unfurl-media))
-                                       ((:username username))
-                                       ((:as_user as-user))
-                                       ((:icon_url icon-url))
-                                       ((:icon_emoji icon-emoji)))
+                                        ((:token token))
+                                        ((:channel channel))
+                                        ((:text text))
+                                        ((:parse parse))
+                                        ((:link_names link-names))
+                                        ((:attachments attachments))
+                                        ((:unfurl_links unfurl-links))
+                                        ((:unfurl_media unfurl-media))
+                                        ((:username username))
+                                        ((:as_user as-user))
+                                        ((:icon_url icon-url))
+                                        ((:icon_emoji icon-emoji)))
   "Post message to a channel based on the given parameters."
   (jasa.core:send
-   (format nil "chat.postMessage?token=~A" jasa:*token*)
-   :json (jasa.core:prepare-arguments parameters
-                            #'(lambda (parameter value)
-                                (cons
-                                 (string-downcase parameter)
-                                 (string value))))))
+   (format nil "chat.postMessage?token=~A" token)
+   :json (jasa.core:prepare-arguments (cddr parameters)
+                                      #'(lambda (parameter value)
+                                          (cons
+                                           (string-downcase parameter)
+                                           (string value))))))
 
 (defun prepare-attachments (&rest attachments &key
                                                 ((:fallback fallback))

@@ -7,20 +7,16 @@
 =(ql:quickload :jasa)=
 
 * Usage
-First of all you need to set your Slack API token.
-
-=(setf jasa:*token* "YourToken")=
-
-This token will be automatically used in all methods which requires authentication.
-
 JASA follows official [[https://api.slack.com/methods/][Slack Web API]] methods convention. You should be able to specify all the arguments described in the Slack API for method which is implemented. For example for [[https://api.slack.com/methods/chat.postMessage][chat.postMessage]] there are plenty of different methods available. Most of the time you can set them using Common Lisp keywords.
 
 *** How to post messages to specific channel.
 #+BEGIN_SRC lisp
-(jasa.chat:post-message :channel "C01234567"
+(jasa.chat:post-message :token "YourSlackAPIToken"
+                        :channel "C01234567"
                         :text "test message")
 
-(jasa.chat:post-message :channel "C01234567"
+(jasa.chat:post-message :token "YourSlackAPIToken"
+                        :channel "C01234567"
                         :text "test message"
                         :icon_emoji ":robot_face:")
 #+END_SRC
@@ -28,7 +24,8 @@ JASA follows official [[https://api.slack.com/methods/][Slack Web API]] methods 
 You can also use [[https://api.slack.com/docs/message-attachments][message attachments]] by calling =(prepare-attachments)= function.
 
 #+BEGIN_SRC lisp
-(jasa.chat:post-message :channel "C01234567"
+(jasa.chat:post-message :token "YourSlackAPIToken"
+                        :channel "C01234567"
                         :attachments (jasa.chat:prepare-attachments :pretext "Structured Message"
                                                                     :text "Hello there!"
                                                                     :color "#36a64f"))
@@ -37,20 +34,25 @@ You can also use [[https://api.slack.com/docs/message-attachments][message attac
 If you want you can also provide raw json yourself.
 
 #+BEGIN_SRC lisp
-(jasa.chat:post-message :channel "C01234567"
+(jasa.chat:post-message :token "YourSlackAPIToken"
+                        :channel "C01234567"
                         :attachments "[{\"pretext\":\"Structured Message\",\"text\":\"Hello there!\",\"color\":\"#36a64f\"}]")
 #+END_SRC
 
 *** How to get information about direct messages.
 #+BEGIN_SRC lisp
-(jasa.im:list-im)
+(jasa.im:list-im :token "YourSlackAPIToken")
 #+END_SRC
 
 *** How to get messages from specific direct messages channel.
 #+BEGIN_SRC lisp
-(jasa.im:history :channel "D01234567" :count "2")
+(jasa.im:history :token "YourSlackAPIToken"
+                 :channel "D01234567"
+                 :count "2")
 
-(jasa.im:history :channel "D01234567" :latest "UnixTimeStamp")
+(jasa.im:history :token "YourSlackAPIToken"
+                 :channel "D01234567"
+                 :latest "UnixTimeStamp")
 #+END_SRC
 
 * API
@@ -83,4 +85,4 @@ If you want you can also provide raw json yourself.
 
 =(jasa.im:open-im)=
 ** jasa.emoji
-=(jasa.emoji:list-emoji)=
+   =(jasa.emoji:list-emoji)=

@@ -1,6 +1,5 @@
 (defpackage #:jasa
-  (:use #:cl)
-  (:export *token*))
+  (:use #:cl))
 
 (defpackage #:jasa.core
   (:use :cl)
