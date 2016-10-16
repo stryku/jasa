@@ -14,4 +14,5 @@
                (:file "im")
                (:file "emoji")
                (:file "channels")
-               (:file "users")))
+               (:file "users")
+               (:file "utils")))

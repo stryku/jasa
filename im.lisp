@@ -32,12 +32,8 @@
   (jasa.core:send-and-get-answer
    (format nil "im.history?token=~A&channel=~A"
            token
-           (build-url
+           (jasa.utils:build-url
             (jasa.core:prepare-arguments
              (cddr arguments)
              #'(lambda (parameter value)
                  (format nil "&~A=~A" (string-downcase parameter) value)))))))
-
-(defun build-url (arguments)
-  (if arguments
-      (concatenate 'string (car arguments) (build-url (cdr arguments)))))
