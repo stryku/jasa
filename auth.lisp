@@ -3,7 +3,9 @@
 (defun test (&key
                ((:token token)))
   "Tests if given token is valid."
-  (jasa.core:send (format nil "auth.test?token=~A" token)))
+  (if token
+      (jasa.core:send (format nil "auth.test?token=~A" token))
+      (error "Argument :token is required.")))
 
 (defun revoke (&key
                  ((:token token)))
