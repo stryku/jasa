@@ -28,3 +28,11 @@
 (defpackage #:jasa.emoji
   (:use :cl)
   (:export list-emoji))
+
+ (defpackage #:jasa.channels
+   (:use :cl)
+   (:export history info))
+
+ (defpackage #:jasa.users
+   (:use :cl)
+   (:export info))

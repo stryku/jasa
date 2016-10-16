@@ -12,4 +12,6 @@
                (:file "chat")
                (:file "bots")
                (:file "im")
-               (:file "emoji")))
+               (:file "emoji")
+               (:file "channels")
+               (:file "users")))

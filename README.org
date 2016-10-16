@@ -85,4 +85,9 @@ If you want you can also provide raw json yourself.
 
 =(jasa.im:open-im)=
 ** jasa.emoji
-   =(jasa.emoji:list-emoji)=
+=(jasa.emoji:list-emoji)=
+** jasa.channels
+=(jasa.channels:history)= (implementation ongoing)
+=(jasa.channels:info)= (implementation ongoing)
+** jasa.users
+=(jasa.users:info)= (implementaiton ongoing)
