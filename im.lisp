@@ -4,7 +4,7 @@
                    ((:token token))
                    ((:channel channel)))
   "Closes the direct message channel."
-  (if (and (token channel))
+  (if (and token channel)
       (jasa.core:send (format nil "im.close?token=~A&channel=~A" token channel))
       (error "Arguments :token and :channel are required.")))
 
@@ -20,7 +20,7 @@
                ((:channel channel))
                ((:ts ts)))
   "Moves the read cursor in a direct message channel."
-  (if (and (token channel ts))
+  (if (and token channel ts)
       (jasa.core:send (format nil "im.mark?token=~A&channel=~A&ts=~A" token channel ts))
       (error "Arguments :token :channel and :ts are required.")))
 
@@ -29,7 +29,7 @@
                   ((:user user))
                   ((:return_im return-im)))
   "Opens a direct message channel."
-  (if (and (token user))
+  (if (and token user)
       (jasa.core:send-and-get-answer (format nil "im.open?token=~A&user=~A&return_im=~A" token user return-im))
       (error "Arguments :token and :user are required.")))
 
@@ -42,7 +42,7 @@
                                   ((:count count))
                                   ((:unreads unreads)))
   "Returns a history of direct message channel."
-  (if (and (token channel))
+  (if (and token channel)
       (jasa.core:send-and-get-answer
        (format nil "im.history?token=~A&channel=~A"
                token

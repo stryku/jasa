@@ -14,7 +14,7 @@
                                         ((:icon_url icon-url))
                                         ((:icon_emoji icon-emoji)))
   "Post message to a channel based on the given parameters."
-  (if (and (token channel text))
+  (if (and token channel text)
       (jasa.core:send
        (format nil "chat.postMessage?token=~A" token)
        :json (jasa.core:prepare-arguments (cddr parameters)

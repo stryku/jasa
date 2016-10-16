@@ -39,4 +39,4 @@
 
  (defpackage #:jasa.utils
    (:use :cl)
-   (:export build-url channel-id))
+   (:export build-url channel-id get-user-name-from-id))
