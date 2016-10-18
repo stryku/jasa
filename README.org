@@ -74,5 +74,6 @@ If you want you can also provide raw json yourself.
 | jasa.im:open-im               | opens new IM channel                         |
 | jasa.emoji:list-emoji         | returns available emoji                      |
 | jasa.channeels:history        | returns history of the channel               |
+| jasa.channels:list            | returns list of the channels                 |
 | jasa.channels:info            | returns channel info                         |
 | jasa.users:info               | returns information about the user           |

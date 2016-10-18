@@ -27,3 +27,11 @@
   (if (and token channel)
       (jasa.core:send-and-get-answer (format nil "channels.info?token=~A&channel=~A" token channel))
       (error "Both :token and :channel are required.")))
+
+(defun channels-list (&key
+               ((:token token))
+               ((:exclude_archived exclude-archived)))
+  "Returns list of the channels."
+  (if token
+      (jasa.core:send-and-get-answer (format nil "channels.list?token=~A&exclude_archived=~A" token exclude-archived))
+      (error "Argument :token is required.")))
