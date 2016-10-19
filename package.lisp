@@ -31,7 +31,7 @@
 
  (defpackage #:jasa.channels
    (:use :cl)
-   (:export history info))
+   (:export history info channels-list))
 
  (defpackage #:jasa.users
    (:use :cl)
