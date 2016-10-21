@@ -57,23 +57,26 @@ If you want you can also provide raw json yourself.
 
 * API
 
-| function                      | description                                  |
-|-------------------------------+----------------------------------------------|
-| jasa.core:send                | sends HTTP request to the Slack              |
-| jasa.core:send-and-get-answer | same as send but returns json with the reply |
-| jasa.api:test                 | tests Slack API                              |
-| jasa.auth:test                | tests given token                            |
-| jasa.auth:revoke              | revokes given token                          |
-| jasa.bots:info                | returns information about a bot user         |
-| jasa.chat:post-message        | sends message                                |
-| jasa.chat:prepare-attachments | creates json for attachments in post-message |
-| jasa.im:close-im              | closes IM channel                            |
-| jasa.im:history               | returns IM channel history                   |
-| jasa.im:list-im               | returns all created IM channels              |
-| jasa.im:mark                  | sets mark on the IM channel                  |
-| jasa.im:open-im               | opens new IM channel                         |
-| jasa.emoji:list-emoji         | returns available emoji                      |
-| jasa.channeels:history        | returns history of the channel               |
-| jasa.channels:list            | returns list of the channels                 |
-| jasa.channels:info            | returns channel info                         |
-| jasa.users:info               | returns information about the user           |
+| function                        | description                                  |
+|---------------------------------+----------------------------------------------|
+| jasa.core:send                  | sends HTTP request to the Slack              |
+| jasa.core:send-and-get-answer   | same as send but returns json with the reply |
+| jasa.utils:build-url            |                                              |
+| jasa.utils:channel-id           |                                              |
+| jasa.utils:get-username-from-id |                                              |
+| jasa.api:test                   | tests Slack API                              |
+| jasa.auth:test                  | tests given token                            |
+| jasa.auth:revoke                | revokes given token                          |
+| jasa.bots:info                  | returns information about a bot user         |
+| jasa.chat:post-message          | sends message                                |
+| jasa.chat:prepare-attachments   | creates json for attachments in post-message |
+| jasa.im:close-im                | closes IM channel                            |
+| jasa.im:history                 | returns IM channel history                   |
+| jasa.im:list-im                 | returns all created IM channels              |
+| jasa.im:mark                    | sets mark on the IM channel                  |
+| jasa.im:open-im                 | opens new IM channel                         |
+| jasa.emoji:list-emoji           | returns available emoji                      |
+| jasa.channeels:history          | returns history of the channel               |
+| jasa.channels:list              | returns list of the channels                 |
+| jasa.channels:info              | returns channel info                         |
+| jasa.users:info                 | returns information about the user           |
