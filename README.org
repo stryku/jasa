@@ -70,6 +70,7 @@ If you want you can also provide raw json yourself.
 | jasa.bots:info                  | returns information about a bot user         |
 | jasa.chat:post-message          | sends message                                |
 | jasa.chat:prepare-attachments   | creates json for attachments in post-message |
+| jasa.chat:delete-message        | deletes message from the channel             |
 | jasa.im:close-im                | closes IM channel                            |
 | jasa.im:history                 | returns IM channel history                   |
 | jasa.im:list-im                 | returns all created IM channels              |

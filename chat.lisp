@@ -51,8 +51,18 @@
                                               (string-downcase parameter)
                                               value))))))
 
-(defun delete-message ()
-  ())
+(defun delete-message (&rest arguments &key
+                                          ((:token token))
+                                          ((:ts ts))
+                                          ((:channel channel))
+                                          ((:as_user as-user)))
+  "Deletes a message from the channel."
+  (if (and token ts channel)
+      (jasa.core:send (format nil "chat.delete?token=~A~A" token
+                              (jasa.utils:build-url
+                               (jasa.core:prepare-arguments (cddr arguments) #'(lambda (parameter value)
+                                                                                 (format nil "&~A=~A" (string-downcase parameter) value))))))
+      (error "Arguments :token :ts and :channel are required.")))
 
 (defun me-message ()
   ())
