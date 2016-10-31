@@ -55,29 +55,50 @@ If you want you can also provide raw json yourself.
                  :latest "UnixTimeStamp")
 #+END_SRC
 
+I am also working on the simple Slack bot - [[https://github.com/dptd/derp][derp]]. *JASA* is being used there a lot so you can check the sample usage there.
+
 * API
 
 | function                        | description                                  |
 |---------------------------------+----------------------------------------------|
+| *jasa.core*                     |                                              |
 | jasa.core:send                  | sends HTTP request to the Slack              |
 | jasa.core:send-and-get-answer   | same as send but returns json with the reply |
+|                                 |                                              |
+| *jasa.utils*                    |                                              |
 | jasa.utils:build-url            |                                              |
 | jasa.utils:channel-id           |                                              |
 | jasa.utils:get-username-from-id |                                              |
+|                                 |                                              |
+| *jasa.api*                      |                                              |
 | jasa.api:test                   | tests Slack API                              |
+|                                 |                                              |
+| *jasa.auth*                     |                                              |
 | jasa.auth:test                  | tests given token                            |
 | jasa.auth:revoke                | revokes given token                          |
+|                                 |                                              |
+| *jasa.bots*                     |                                              |
 | jasa.bots:info                  | returns information about a bot user         |
+|                                 |                                              |
+| *jasa.chat*                     |                                              |
 | jasa.chat:post-message          | sends message                                |
 | jasa.chat:prepare-attachments   | creates json for attachments in post-message |
 | jasa.chat:delete-message        | deletes message from the channel             |
+|                                 |                                              |
+| *jasa.im*                       |                                              |
 | jasa.im:close-im                | closes IM channel                            |
 | jasa.im:history                 | returns IM channel history                   |
 | jasa.im:list-im                 | returns all created IM channels              |
 | jasa.im:mark                    | sets mark on the IM channel                  |
 | jasa.im:open-im                 | opens new IM channel                         |
+|                                 |                                              |
+| *jasa.emoji*                    |                                              |
 | jasa.emoji:list-emoji           | returns available emoji                      |
-| jasa.channeels:history          | returns history of the channel               |
+|                                 |                                              |
+| *jasa.channels*                 |                                              |
+| jasa.channels:history           | returns history of the channel               |
 | jasa.channels:list              | returns list of the channels                 |
 | jasa.channels:info              | returns channel info                         |
+|                                 |                                              |
+| *jasa.users*                    |                                              |
 | jasa.users:info                 | returns information about the user           |
