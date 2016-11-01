@@ -14,7 +14,7 @@
                                         ((:icon_url icon-url))
                                         ((:icon_emoji icon-emoji)))
   "Post message to a channel based on the given parameters."
-  (if (and token channel text)
+  (if (and token channel)
       (jasa.core:send
        (format nil "chat.postMessage?token=~A" token)
        :json (jasa.core:prepare-arguments (cddr parameters)
@@ -22,7 +22,7 @@
                                               (cons
                                                (string-downcase parameter)
                                                (string value)))))
-      (error "Arguments :token :channel and :text are required.")))
+      (error "Arguments :token and :channel are required.")))
 
 (defun prepare-attachments (&rest attachments &key
                                                 ((:fallback fallback))
@@ -38,6 +38,7 @@
                                                 ((:title_link title-link))
                                                 ((:text text))
                                                 ((:fields fields)) ;; todo, json
+                                                ((:mrkdwn_in mrkdwn-in)) ;; todo, json
                                                 ((:image_url image-url))
                                                 ((:thumb_url thumb-url))
                                                 ((:footer footer))
