@@ -38,7 +38,7 @@
                                                 ((:title_link title-link))
                                                 ((:text text))
                                                 ;((:fields fields)) ;; todo, json
-                                                ((:mrkdwn_in mrkdwn-in)) ;; todo, json
+                                                ((:mrkdwn_in mrkdwn-in)) ; pretext, text and fields
                                                 ((:image_url image-url))
                                                 ((:thumb_url thumb-url))
                                                 ((:footer footer))
@@ -50,8 +50,15 @@
 (defun prepare-json-from-attachments (attachments)
   (if attachments
       (if (eq (car attachments) :mrkdwn_in)
-          (concatenate 'string (format nil "\"mrkdwn_in\":[\"~A\"]" (cadr attachments)))
-          (concatenate 'string (format nil "\"~A\":\"~A\"," (string-downcase (car attachments)) (cadr attachments)) (foo (cddr attachments))))))
+          (concatenate 'string (format nil "\"mrkdwn_in\":[~A]"
+                                       (if (listp (cadr attachments))
+                                           (list-of-arguments-to-string (cadr attachments))
+                                           (cadr attachments))))
+          (concatenate 'string (format nil "\"~A\":\"~A\"," (string-downcase (car attachments)) (cadr attachments)) (prepare-json-from-attachments (cddr attachments))))))
+
+(defun list-of-arguments-to-string (list)
+  (if list
+      (concatenate 'string (format nil "\"~A\"," (car list)) (list-of-arguments-to-string (cdr list)))))
 
 (defun delete-message (&rest arguments &key
                                           ((:token token))
