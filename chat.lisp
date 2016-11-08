@@ -45,15 +45,15 @@
                                                 ((:footer_icon footer_icon))
                                                 ((:ts ts)))
   "Returns attachments which can be used in post-message function."
+  (if (and mrkdwn-in (not (listp mrkdwn-in)))
+      (error ":mrkdwn-in must be a list of strings"))
   (format nil "[{~A}]" (prepare-json-from-attachments attachments)))
 
 (defun prepare-json-from-attachments (attachments)
   (if attachments
       (if (eq (car attachments) :mrkdwn_in)
-          (concatenate 'string (format nil "\"mrkdwn_in\":[~A]"
-                                       (if (listp (cadr attachments))
-                                           (list-of-arguments-to-string (cadr attachments))
-                                           (cadr attachments))))
+          (concatenate 'string (format nil "\"mrkdwn_in\":[~A],"
+                                           (list-of-arguments-to-string (cadr attachments))))
           (concatenate 'string (format nil "\"~A\":\"~A\"," (string-downcase (car attachments)) (cadr attachments)) (prepare-json-from-attachments (cddr attachments))))))
 
 (defun list-of-arguments-to-string (list)
