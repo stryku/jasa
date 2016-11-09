@@ -53,7 +53,7 @@
   (if attachments
       (if (eq (car attachments) :mrkdwn_in)
           (concatenate 'string (format nil "\"mrkdwn_in\":[~A],"
-                                           (list-of-arguments-to-string (cadr attachments))))
+                                           (list-of-arguments-to-string (cadr attachments))) (prepare-json-from-attachments (cddr attachments)))
           (concatenate 'string (format nil "\"~A\":\"~A\"," (string-downcase (car attachments)) (cadr attachments)) (prepare-json-from-attachments (cddr attachments))))))
 
 (defun list-of-arguments-to-string (list)
