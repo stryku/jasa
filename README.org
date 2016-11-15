@@ -100,5 +100,8 @@ I am also working on the simple Slack bot - [[https://github.com/dptd/derp][derp
 | jasa.channels:list              | returns list of the channels                 |
 | jasa.channels:info              | returns channel info                         |
 |                                 |                                              |
+| *jasa.groups*                   |                                              |
+| jasa.groups:history             | returns history of the group                 |
+|                                 |                                              |
 | *jasa.users*                    |                                              |
 | jasa.users:info                 | returns information about the user           |

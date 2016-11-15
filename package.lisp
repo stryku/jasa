@@ -37,6 +37,10 @@
    (:use :cl)
    (:export info))
 
+ (defpackage #:jasa.groups
+   (:use :cl)
+   (:export history))
+
  (defpackage #:jasa.utils
    (:use :cl)
    (:export build-url channel-id get-user-name-from-id))

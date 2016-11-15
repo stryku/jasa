@@ -15,4 +15,5 @@
                (:file "emoji")
                (:file "channels")
                (:file "users")
+               (:file "groups")
                (:file "utils")))
